@@ -1,10 +1,10 @@
 package com.xrdcode.pertemuan1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.xrdcode.pertemuan1.adapter.CustomAdapter;
@@ -12,6 +12,7 @@ import com.xrdcode.pertemuan1.adapter.CustomAdapter;
 public class MainActivity extends AppCompatActivity {
 
     public ListView listView;
+    public Button materi2btn;
     String[] data = {
             "Today, May 17 - Clear - 17°C / 15°C",
             "Tomorrow - Cloudy - 19°C / 15°C",
@@ -36,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.lv);
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), data);
+
+        materi2btn = (Button) findViewById(R.id.search);
+
+        materi2btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivity(i);
+            }
+        });
 
         listView.setAdapter(customAdapter);
     }
